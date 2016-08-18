@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router';
+import { browserHistory, Link } from 'react-router';
 import { Button, Image } from 'react-bootstrap';
 
 import { loginUser, logoutUser, getPlaylists, getLikes, getFollowings } from '../actions/auth';
@@ -38,6 +38,7 @@ export default class UserNav extends Component {
   logout(e){
     e.preventDefault();
     const { dispatch } = this.props;
+    browserHistory.push('/');
     dispatch(logoutUser());
   }
 

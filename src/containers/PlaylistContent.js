@@ -7,7 +7,13 @@ class PlaylistContent extends Component {
 
   render() {
     const { playlist, dispatch } = this.props;
-    return <Tracks tracks={playlist.tracks} {...this.props} />;
+    return (
+      <div>
+        <h1>{playlist.title}</h1>
+        <hr></hr>
+        <Tracks tracks={playlist.tracks} {...this.props} />;
+      </div>
+    )
   }
 }
 
