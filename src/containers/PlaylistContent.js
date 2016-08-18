@@ -11,7 +11,7 @@ class PlaylistContent extends Component {
       <div>
         <h1>{playlist.title}</h1>
         <hr></hr>
-        <Tracks tracks={playlist.tracks} {...this.props} />;
+        <Tracks tracks={playlist.tracks} {...this.props} />
       </div>
     )
   }

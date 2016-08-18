@@ -3,12 +3,22 @@ import { Button, Well, Image, Row, Col, Glyphicon } from 'react-bootstrap';
 import { Link } from 'react-router';
 
 export default class Track extends Component {
+  constructor(props) {
+    super(props);
+    this.playTrack = this.playTrack.bind(this);
+  }
+
+  playTrack(e) {
+    e.preventDefault();
+    console.log('track: ', this.props);
+  }
+
   render() {
     const { track } = this.props;
     return (
       <Well>
         <Row>
-          <Col xs={2}><img src={track.artwork_url} /></Col>
+          <Col xs={2}><img onClick={this.playTrack} src={track.artwork_url} /></Col>
           <Col xs={6}>
             {track.title}
             <br></br>

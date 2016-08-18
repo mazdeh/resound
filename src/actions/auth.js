@@ -10,12 +10,11 @@ function setUser(user) {
   };
 }
 
-function resetUser() {
+export function logoutUser() {
   return {
     type: types.USER_RESET
   }
 }
-
 function setPlaylists(playlists) {
   return {
     type: types.PLAYLISTS_SET,
@@ -53,12 +52,6 @@ export function loginUser() {
       });
     });
   };
-}
-
-export function logoutUser() {
-  return function (dispatch) {
-    return dispatch(resetUser());
-  }
 }
 
 export function getPlaylists(userId) {
