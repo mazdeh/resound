@@ -53,19 +53,19 @@ export default class UserNav extends Component {
       return (
         <div>
           <Button bsStyle="link" onClick={this.followings}>
-            <Link to="/followings" activeStyle={{ color: 'red'}} >Followings</Link>
+            <Link to="/me/followings" activeStyle={{ color: 'red'}} >Followings</Link>
           </Button>
           <Button bsStyle="link" onClick={this.playlists}>
-            <Link to="/playlists" activeStyle={{ color: 'red'}} >Playlists</Link>
+            <Link to="/me/playlists" activeStyle={{ color: 'red'}} >Playlists</Link>
           </Button>
           <Button bsStyle="link" onClick={this.likes}>
-            <Link to="/likes" activeStyle={{ color: 'red' }}>Likes</Link>
+            <Link to="/me/likes" activeStyle={{ color: 'red' }}>Likes</Link>
           </Button>
           <Button bsStyle="link" onClick={this.logout}>
             <Link to="/">
-            {user.username}
-            <Image className="images" src={user.avatar_url} circle />
+            {user.username} <small>(logout)</small>
             </Link>
+            <Image className="images" src={user.avatar_url} circle />
           </Button>
         </div>
       )

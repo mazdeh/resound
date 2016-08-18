@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import Tracks from './Tracks';
+import Tracks from '../components/Tracks';
 
 class PlaylistContent extends Component {
 
   render() {
     const { playlist, dispatch } = this.props;
-    return <Tracks tracks={playlist.tracks} dispatch={dispatch} />;
+    return <Tracks tracks={playlist.tracks} {...this.props} />;
   }
 }
 

@@ -5,3 +5,4 @@ export const PLAYLISTS_SET = 'PLAYLISTS_SET';
 export const LIKES_SET = 'LIKES_SET';
 export const PLAYING_SET = 'PLAYING_SET';
 export const FOLLOWINGS_SET = 'FOLLOWINGS_SET';
+export const LIKE_TRACK = 'LIKE_TRACK';

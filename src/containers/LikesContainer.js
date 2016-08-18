@@ -5,8 +5,8 @@ import Tracks from '../components/Tracks';
 
 class LikesContainer extends Component {
   render() {
-    const { likes, dispatch } = this.props;
-    return <Tracks tracks={likes} dispatch={dispatch}/>;
+    const { likes } = this.props;
+    return <Tracks tracks={likes} {...this.props} />;
   }
 }
 

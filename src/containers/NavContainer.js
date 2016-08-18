@@ -35,10 +35,9 @@ class NavContainer extends Component {
 }
 
 function mapStateToProps(state) {
-  const { auth, playlists } = state;
+  const { auth } = state;
   return {
-    auth,
-    playlists
+    auth
   }
 }
 

@@ -1,6 +1,8 @@
 import { CLIENT_ID, REDIRECT_URI} from '../constants/auth';
 import * as types from '../constants/actionTypes';
 
+import { browserHistory } from 'react-router';
+
 function setUser(user) {
   return {
     type: types.USER_SET,
@@ -45,7 +47,9 @@ export function loginUser() {
       fetch(`//api.soundcloud.com/me?oauth_token=${session.oauth_token}`)
       .then((response) => response.json())
       .then((user) => {
+        browserHistory.push('/me/likes');
         dispatch(setUser(user));
+        dispatch(getLikes(user.id));
       });
     });
   };
