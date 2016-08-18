@@ -7,8 +7,8 @@
 - react-router
 
 ## run
-```npm install``
-`
+```npm install```
+
 ```npm start```
 
 visit `localhost:8080`
