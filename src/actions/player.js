@@ -14,10 +14,21 @@ export function playSong(id) {
 
     const url = '/tracks/' + id;
     SC.stream(url)
-      .then(function(player) {
-      console.log('monna play: ', player);
-      player.play();
-      dispatch(setPlaying(player))
+      .then((player) => {
+        console.log('player: ', player);
+        player.play((d) => {
+          console.log('I was played: ', d);
+
+        })
+        dispatch(setPlaying(player))
     });
+
+    // fetch(url, {
+    //   mode: 'no-cors'
+    // })
+    //   .then((response) => response.JSON())
+    //   .then((response) => {
+    //     console.log('reponse: ', response);
+    //   })
   }
 }

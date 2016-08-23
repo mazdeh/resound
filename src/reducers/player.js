@@ -15,6 +15,6 @@ export default function(state = initialState, action) {
 function setPlaying(state, action) {
     const { player } = action;
     return Object.assign({}, state, {
-      player: player[0]
+      player: player
     })
 }

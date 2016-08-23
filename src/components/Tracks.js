@@ -22,12 +22,12 @@ export default class Tracks extends Component {
   // }
 
   render() {
-    const { tracks } = this.props;
+    const { tracks, dispatch } = this.props;
     return (
       <div>
         {
           tracks.map((track, key) => {
-            return <Track key={key} track={track} />;
+            return <Track key={key} track={track} dispatch={dispatch} />;
           })
         }
       </div>

@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { Button, Well, Image, Row, Col, Glyphicon } from 'react-bootstrap';
 import { Link } from 'react-router';
 
+import { playSong } from '../actions/player.js';
+
 export default class Track extends Component {
   constructor(props) {
     super(props);
@@ -10,7 +12,9 @@ export default class Track extends Component {
 
   playTrack(e) {
     e.preventDefault();
-    console.log('track: ', this.props);
+    const { track, dispatch } = this.props;
+    const id = track.id;
+    dispatch(playSong(id))
   }
 
   render() {
