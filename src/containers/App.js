@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import NavContainer from './NavContainer';
+import PlayerContainer from './PlayerContainer';
 
 class App extends Component {
     render() {
@@ -9,9 +10,9 @@ class App extends Component {
           <div>
             <NavContainer />
             <div className="container">
-            {this.props.children}
+              {this.props.children}
             </div>
-            {/*<PlayerNav />*/}
+            <PlayerContainer />
           </div>
         )
     }

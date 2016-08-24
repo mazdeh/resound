@@ -6,3 +6,9 @@
 small {
   opacity: .7;
 }
+
+.player-img {
+  margin: 10px 0 0 0;
+  height: 30px;
+  width: 30px;
+}

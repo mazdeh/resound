@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Button, Well, Image, Row, Col, Glyphicon } from 'react-bootstrap';
 import { Link } from 'react-router';
 
-import { playSong } from '../actions/player.js';
+import { getPlayer, toggleIsPlaying, setPlayingTrack } from '../actions/player.js';
 
 export default class Track extends Component {
   constructor(props) {
@@ -13,8 +13,11 @@ export default class Track extends Component {
   playTrack(e) {
     e.preventDefault();
     const { track, dispatch } = this.props;
-    const id = track.id;
-    dispatch(playSong(id))
+    // set track on state.player
+    dispatch(setPlayingTrack(track));
+    // get SCplayer from SC
+    dispatch(getPlayer(track.id))
+    dispatch(toggleIsPlaying(true));
   }
 
   render() {
