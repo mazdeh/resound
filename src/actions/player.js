@@ -8,6 +8,13 @@ function setPlayer(player) {
     };
 };
 
+export function setCurrentTime(now) {
+  return {
+    type: types.SET_CURRENT_TIME,
+    now
+  }
+}
+
 export function toggleIsPlaying(isPlaying) {
   return {
     type: types.TOGGLE_IS_PLAYING,
