@@ -25,7 +25,9 @@ export default class Track extends Component {
     return (
       <Well>
         <Row>
-          <Col xs={2}><img onClick={this.playTrack} src={track.artwork_url} /></Col>
+          <Col xs={2} onClick={this.playTrack}>
+          <img src={track.artwork_url} />
+          </Col>
           <Col xs={6}>
             {track.title}
             <br></br>

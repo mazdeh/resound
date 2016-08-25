@@ -3,7 +3,6 @@ import * as types from '../constants/actionTypes';
 const initialState = {
   isPlaying: false,
   playingTrack: null,
-  currentTime: null,
   SCplayer: {}
 };
 
@@ -34,7 +33,6 @@ function setPlayer(state, action) {
 
 
   return Object.assign({}, state, {
-    SCplayer: player,
-    currentTime: player.audioLogger.currentTime
+    SCplayer: player
   })
 }

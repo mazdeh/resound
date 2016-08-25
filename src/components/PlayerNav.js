@@ -8,21 +8,20 @@ export default class PlayerNav extends Component {
   constructor(props) {
     super(props);
     this.togglePlay = this.togglePlay.bind(this);
-  }
-
-  componentWillMount() {
     this.state = {
       currentTime: 0
     }
   }
 
-  componentDidMount() {
-    const now = Math.floor((SCplayer.currentTime() / SCplayer.options.duration) * 100);
-    this.setState({
-      currentTime: now
-    })
+  componentWillReceiveProps(props) {
+    const { SCplayer } = props;
 
-    // dispatch(setCurrentTime(now));
+    SCplayer.on('time', () => {
+      const now = SCplayer.currentTime() / SCplayer.options.duration * 100;
+      this.setState({
+        currentTime: now
+      })
+    })
   }
 
   togglePlay() {
@@ -37,24 +36,21 @@ export default class PlayerNav extends Component {
   }
 
   render () {
-    const { isPlaying, SCplayer, playingTrack, currentTime } = this.props;
-    console.log('currentTime:', currentTime);
+    const { isPlaying, SCplayer, playingTrack } = this.props;
     return (
       <div>
-      <ProgressBar now={currentTime} />
       <Navbar fixedBottom>
+        <ProgressBar now={this.state.currentTime} />
         <Navbar.Header>
           <img className="player-img" src={playingTrack.artwork_url} />
+          {playingTrack.title}
         </Navbar.Header>
         <Nav>
-          <NavItem>
-            {playingTrack.title}
-          </NavItem>
-          <NavItem onClick={this.togglePlay}>
+        <NavItem onClick={this.togglePlay}>
           {
             isPlaying ? <Glyphicon glyph="pause" /> : <Glyphicon glyph="play" />
           }
-          </NavItem>
+        </NavItem>
         </Nav>
       </Navbar>
       </div>
