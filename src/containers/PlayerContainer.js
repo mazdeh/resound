@@ -13,12 +13,11 @@ class PlayerContainer extends Component {
 
 function mapStateToProps(state) {
   const { player } = state;
-  const { SCplayer, isPlaying, playingTrack, currentTime } = player;
+  const { SCplayer, isPlaying, playingTrack } = player;
   return {
     isPlaying,
     playingTrack,
-    SCplayer,
-    currentTime
+    SCplayer
   }
 }
 

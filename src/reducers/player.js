@@ -28,9 +28,7 @@ export default function(state = initialState, action) {
 
 function setPlayer(state, action) {
   const { player } = action;
-  // play the song
   player.play();
-
 
   return Object.assign({}, state, {
     SCplayer: player

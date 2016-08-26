@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { browserHistory, Link } from 'react-router';
 import { Button, Image } from 'react-bootstrap';
 
+import FlatButton from 'material-ui/FlatButton'
+
 import { loginUser, logoutUser, getPlaylists, getLikes, getFollowings } from '../actions/auth';
 
 export default class UserNav extends Component {
@@ -71,7 +73,7 @@ export default class UserNav extends Component {
         </div>
       )
     } else {
-      return <Button bsStyle="success" onClick={this.login}>Login</Button>;
+      return <FlatButton label="Login" onClick={this.login} />;
     }
   }
 }

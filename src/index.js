@@ -13,6 +13,8 @@ import LikesContainer from './containers/LikesContainer';
 import FollowingsContainer from './containers/FollowingsContainer';
 import PlaylistContent from './containers/PlaylistContent';
 
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+
 import Callback from './components/Callback';
 
 const store = configureStore();
@@ -20,6 +22,7 @@ const history = syncHistoryWithStore(browserHistory, store);
 
 ReactDOM.render(
   <Provider store={store}>
+    <MuiThemeProvider>
     <Router history={history}>
       <Route path="/" component={App} />
       <Route path="me" component={App} >
@@ -31,6 +34,7 @@ ReactDOM.render(
 
       <Route path="/callback" component={Callback} />
     </Router>
+    </MuiThemeProvider>
   </Provider>,
     document.getElementById('app')
 );

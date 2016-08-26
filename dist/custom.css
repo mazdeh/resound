@@ -1,3 +1,7 @@
+html, body {
+  font-family: 'Roboto', sans-serif;
+}
+
 .images {
   height: 25px;
   margin-left: 10px;
@@ -18,7 +22,6 @@ small {
   vertical-align: middle;
   display: block;
 }
-
 
 .progress {
   height: 2px;

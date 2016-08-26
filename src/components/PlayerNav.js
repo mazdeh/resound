@@ -15,7 +15,6 @@ export default class PlayerNav extends Component {
 
   componentWillReceiveProps(props) {
     const { SCplayer } = props;
-
     SCplayer.on('time', () => {
       const now = SCplayer.currentTime() / SCplayer.options.duration * 100;
       this.setState({

@@ -35,8 +35,7 @@ export function getPlayer(id) {
 
     const url = '/tracks/' + id;
     SC.stream(url)
-      .then((player, err) => {
-        if (err) console.log(err);
+      .then((player) => {
         dispatch(setPlayer(player))
     });
   }
