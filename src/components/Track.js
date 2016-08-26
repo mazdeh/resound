@@ -1,8 +1,20 @@
 import React, { Component } from 'react';
-import { Button, Well, Image, Row, Col, Glyphicon } from 'react-bootstrap';
 import { Link } from 'react-router';
+// import { Button, Well, Image, Row, Col, Glyphicon } from 'react-bootstrap';
+import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card';
+import { GridTile } from 'material-ui/GridList';
 
 import { getPlayer, toggleIsPlaying, setPlayingTrack } from '../actions/player.js';
+
+const styles = {
+  card: {
+    display: 'flex',
+    flexDirection: 'column',
+    width: 300,
+    padding: '.5em',
+    margin: 10
+  }
+}
 
 export default class Track extends Component {
   constructor(props) {
@@ -23,12 +35,18 @@ export default class Track extends Component {
   render() {
     const { track } = this.props;
     return (
-      <Well>
-        <Row>
-          <Col xs={2} onClick={this.playTrack}>
+      <div style={styles.gridTile}>
+      <Card style={styles.card}>
+        <CardHeader
+          title={track.title}
+          subtitle={track.user.username}
+        />
+
+        <CardMedia onClick={this.playTrack} >
           <img src={track.artwork_url} />
-          </Col>
-          <Col xs={6}>
+        </CardMedia>
+
+          {/*<Col xs={6}>
             {track.title}
             <br></br>
             <small>
@@ -46,9 +64,9 @@ export default class Track extends Component {
                 </small>
               </Col>
             </Row>
-          </Col>
-        </Row>
-      </Well>
+          </Col>*/}
+      </Card>
+      </div>
     );
   }
 }

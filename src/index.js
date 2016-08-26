@@ -14,15 +14,18 @@ import FollowingsContainer from './containers/FollowingsContainer';
 import PlaylistContent from './containers/PlaylistContent';
 
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import injectTapEventPlugin from 'react-tap-event-plugin';
 
 import Callback from './components/Callback';
 
 const store = configureStore();
 const history = syncHistoryWithStore(browserHistory, store);
 
+injectTapEventPlugin();
+
 ReactDOM.render(
+  <MuiThemeProvider>
   <Provider store={store}>
-    <MuiThemeProvider>
     <Router history={history}>
       <Route path="/" component={App} />
       <Route path="me" component={App} >
@@ -34,7 +37,7 @@ ReactDOM.render(
 
       <Route path="/callback" component={Callback} />
     </Router>
-    </MuiThemeProvider>
-  </Provider>,
+  </Provider>
+  </MuiThemeProvider>,
     document.getElementById('app')
 );

@@ -1,20 +1,28 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import injectTapEventPlugin from 'react-tap-event-plugin';
+import GridList from 'material-ui/GridList';
 
 import NavContainer from './NavContainer';
 import PlayerContainer from './PlayerContainer';
 
-injectTapEventPlugin();
+const styles = {
+  gridList: {
+    display: 'flex',
+    flexwrap: 'wrap',
+    maxWidth: '60em'
+  }
+};
 
 class App extends Component {
     render() {
         return (
           <div>
-            <NavContainer />
-            {this.props.children}
-            <PlayerContainer />
+          <NavContainer />
+              <div style={styles.gridList}>
+                {this.props.children}
+              </div>
+          <PlayerContainer />
           </div>
         )
     }
