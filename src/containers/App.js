@@ -7,10 +7,9 @@ import NavContainer from './NavContainer';
 import PlayerContainer from './PlayerContainer';
 
 const styles = {
-  gridList: {
+  flexContainer: {
     display: 'flex',
-    flexwrap: 'wrap',
-    maxWidth: '60em'
+    flexFlow: 'row wrap'
   }
 };
 
@@ -19,7 +18,7 @@ class App extends Component {
         return (
           <div>
           <NavContainer />
-              <div style={styles.gridList}>
+              <div style={styles.flexContainer}>
                 {this.props.children}
               </div>
           <PlayerContainer />

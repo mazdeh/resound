@@ -6,7 +6,9 @@ import { playSong } from '../actions/player';
 const styles = {
   gridTile: {
     display: 'flex',
-    width: '100%'
+    flexFlow: 'row wrap',
+    alignItems: 'flex-start',
+    justifyContent: 'space-around'
   }
 }
 
