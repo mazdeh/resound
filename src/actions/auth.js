@@ -49,6 +49,7 @@ export function loginUser() {
         browserHistory.push('/me/likes');
         dispatch(setUser(user));
         dispatch(getLikes(user.id));
+        dispatch(getPlaylists(user.id));
       });
     });
   };

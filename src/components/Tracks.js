@@ -2,15 +2,7 @@ import React, { Component } from 'react';
 
 import Track from './Track';
 import { playSong } from '../actions/player';
-
-const styles = {
-  gridTile: {
-    display: 'flex',
-    flexFlow: 'row wrap',
-    alignItems: 'flex-start',
-    justifyContent: 'space-around'
-  }
-}
+import styles from '../styles/PaperStyle';
 
 export default class Tracks extends Component {
   render() {

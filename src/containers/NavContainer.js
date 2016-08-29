@@ -4,12 +4,21 @@ import { connect } from 'react-redux';
 import AppBar from 'material-ui/AppBar';
 
 import UserNav from '../components/UserNav';
+import FontIcon from 'material-ui/FontIcon';
+import styles from '../styles/MenuButtonStyle';
+
+import {fullWhite} from 'material-ui/styles/colors';
+
 
 class NavContainer extends Component {
   render() {
     return (
       <AppBar
         title="resound"
+        iconElementLeft={
+          <FontIcon className="material-icons" style={styles.logo} color={fullWhite}>
+            headset
+          </FontIcon>}
         iconElementRight={<UserNav {...this.props} />}
         />
     )

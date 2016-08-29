@@ -2,44 +2,30 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Well, Row, Col } from 'react-bootstrap';
 
-import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card';
+import Avatar from 'material-ui/Avatar';
+import List from 'material-ui/List/List';
+import ListItem from 'material-ui/List/ListItem';
 
-const styles = {
-  gridTile: {
-    display: 'flex',
-    width: '100%'
-  },
-  card: {
-    display: 'flex',
-    flexDirection: 'column',
-    padding: '0.5em',
-    flex: 1
-  }
-}
+import styles from '../styles/PaperStyle';
 
 class FollowingsContainer extends Component {
   render() {
     const { followings } = this.props;
     return (
-      <div style={styles.gridTile}>
+        <List>
         {
           followings.map((following, key) => {
             return (
-              <Card
-                key={key}
-                style={styles.card}
+                <ListItem
+                  key={key}
+                  leftAvatar={<Avatar src={following.avatar_url} />}
                 >
-                <CardHeader
-                  title={following.username} >
-                </CardHeader>
-                <CardMedia>
-                  <img src={following.avatar_url} />
-                </CardMedia>
-              </Card>
+                  {following.username}
+                </ListItem>
             )
           })
         }
-      </div>
+        </List>
     )
   }
 }

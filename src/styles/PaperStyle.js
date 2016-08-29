@@ -1,4 +1,10 @@
 export default {
+  gridTile: {
+    display: 'flex',
+    flexFlow: 'row wrap',
+    alignItems: 'flex-start',
+    justifyContent: 'space-around'
+  },
   paper: {
     display: 'flex',
     flexFlow: 'column nowrap',

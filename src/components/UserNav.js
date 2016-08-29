@@ -1,36 +1,20 @@
 import React, { Component } from 'react';
-import { browserHistory, Link } from 'react-router';
-import { Button, Image } from 'react-bootstrap';
+import { browserHistory } from 'react-router';
+
+import { loginUser, logoutUser, getPlaylists, getLikes, getFollowings } from '../actions/auth';
+import PlaylistsContainer from '../containers/PlaylistsContainer';
 
 import FlatButton from 'material-ui/FlatButton';
 import RaisedButton from 'material-ui/RaisedButton';
-
-import { loginUser, logoutUser, getPlaylists, getLikes, getFollowings } from '../actions/auth';
-
-const styles = {
-  buttons: {
-    marginLeft: 10,
-    marginTop: 7
-  }
-}
-
+import styles from '../styles/MenuButtonStyle'
 
 export default class UserNav extends Component {
   constructor(props) {
     super(props);
     this.login = this.login.bind(this);
     this.logout = this.logout.bind(this);
-    this.playlists = this.playlists.bind(this);
     this.followings = this.followings.bind(this);
     this.likes = this.likes.bind(this);
-  }
-
-  playlists(e) {
-    e.preventDefault();
-    const { dispatch } = this.props;
-    const { user } = this.props.auth;
-    dispatch(getPlaylists(user.id));
-    browserHistory.push('/me/playlists');
   }
 
   followings(e) {
@@ -73,12 +57,7 @@ export default class UserNav extends Component {
             rippleColor="white"
             style={styles.buttons}
           />
-          <FlatButton
-            onClick={this.playlists}
-            label="Playlists"
-            rippleColor="white"
-            style={styles.buttons}
-          />
+          <PlaylistsContainer />
           <FlatButton
             onClick={this.likes}
             label="Likes"

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router';
 
 import { getPlayer, toggleIsPlaying, setPlayingTrack } from '../actions/player.js';
-import styles from '../styles/PaperStyles';
+import styles from '../styles/PaperStyle';
 import Paper from 'material-ui/Paper';
 import FontIcon from 'material-ui/FontIcon';
 
