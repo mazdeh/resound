@@ -1,8 +1,11 @@
 import React, { Component } from 'react';
-import { Button, Well, Image, Row, Col, Glyphicon } from 'react-bootstrap';
 import { Link } from 'react-router';
 
-import { playSong } from '../actions/player.js';
+import { getPlayer, toggleIsPlaying, setPlayingTrack } from '../actions/player.js';
+import styles from '../styles/PaperStyle';
+import Paper from 'material-ui/Paper';
+import FontIcon from 'material-ui/FontIcon';
+
 
 export default class Track extends Component {
   constructor(props) {
@@ -13,37 +16,46 @@ export default class Track extends Component {
   playTrack(e) {
     e.preventDefault();
     const { track, dispatch } = this.props;
-    const id = track.id;
-    dispatch(playSong(id))
+    // set track on state.player
+    dispatch(setPlayingTrack(track));
+    // get SCplayer from SC
+    dispatch(getPlayer(track.id))
+    dispatch(toggleIsPlaying(true));
   }
 
   render() {
     const { track } = this.props;
     return (
-      <Well>
-        <Row>
-          <Col xs={2}><img onClick={this.playTrack} src={track.artwork_url} /></Col>
-          <Col xs={6}>
-            {track.title}
-            <br></br>
-            <small>
-                {track.user.username}
-            </small>
-            <Row>
-              <Col xs={3}>
-              <small>
-                {track.comment_count} <Glyphicon glyph="comment" />
-              </small>
-              </Col>
-              <Col xs={3}>
-                <small>
-                  {track.favoritings_count} <Glyphicon glyph="heart" />
-                </small>
-              </Col>
-            </Row>
-          </Col>
-        </Row>
-      </Well>
+      <Paper style={styles.paper}>
+        <div onClick={this.playTrack} style={styles.media}>
+          <img src={track.artwork_url} />
+        </div>
+        <div style={styles.header}>
+          <div>{track.title}</div>
+
+          <div style={styles.info}>
+            <span>
+              {track.user.username}
+            </span>
+            <span>
+              <FontIcon
+                style={styles.icons}
+                className="material-icons">
+                  mode_comment
+              </FontIcon>
+              {track.comment_count}
+            </span>
+            <span>
+              <FontIcon
+                style={styles.icons}
+                className="material-icons">
+                  favorite
+              </FontIcon>
+              {track.favoritings_count}
+            </span>
+          </div>
+        </div>
+      </Paper>
     );
   }
 }

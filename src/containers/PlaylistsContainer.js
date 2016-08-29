@@ -1,41 +1,78 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router';
-import { Modal, Button } from 'react-bootstrap';
+import { browserHistory } from 'react-router';
+
+import { getPlaylists } from '../actions/auth';
+
+import FlatButton from 'material-ui/FlatButton';
+import Popover from 'material-ui/Popover';
+import Menu from 'material-ui/Menu';
+import MenuItem from 'material-ui/MenuItem';
+import styles from '../styles/MenuButtonStyle'
+
 
 class PlaylistsContainer extends Component {
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      open: false,
+    };
+  }
+
+  handleTouchTap = (event) => {
+    event.preventDefault();
+    this.setState({
+      open: true,
+      anchorEl: event.currentTarget,
+    });
+  };
+
+  handleRequestClose = () => {
+    this.setState({
+      open: false,
+    });
+  };
+
+  goToPlaylist(playlist) {
+    this.handleRequestClose();
+    browserHistory.push('/me/playlists/' + playlist.id)
+  }
 
   render() {
     const { playlists } = this.props;
     return (
-      <div className="static-modal">
-        <Modal.Dialog>
-          <Modal.Header>
-            <Modal.Title>My Playlists</Modal.Title>
-          </Modal.Header>
-
-        <Modal.Body>
-        {
-          playlists.map((playlist, key) => {
-            const linkTo = "/me/playlists/" + playlist.id;
-            return (
-              <Button bsStyle="link" key={key}>
-                <Link to={linkTo} activeStyle={{ color: 'red' }}>{playlist.title}</Link>
-              </Button>
-            )
-          })
-        }
-        </Modal.Body>
-
-        <Modal.Footer>
-          <Button bsStyle="info">
-            <Link to="/">Close</Link>
-          </Button>
-        </Modal.Footer>
-
-        </Modal.Dialog>
-      </div>
-      )
+      <span>
+        <FlatButton
+          onTouchTap={this.handleTouchTap}
+          label="Playlists"
+          style={styles.buttons}
+        />
+        <Popover
+          open={this.state.open}
+          anchorEl={this.state.anchorEl}
+          anchorOrigin={{horizontal: 'left', vertical: 'bottom'}}
+          targetOrigin={{horizontal: 'left', vertical: 'top'}}
+          onRequestClose={this.handleRequestClose}
+        >
+          <Menu>
+          {
+            playlists.map((playlist, key) => {
+              const boundGoToPlaylist = this.goToPlaylist.bind(this, playlist)
+              return (
+                <MenuItem
+                  key={key}
+                  onTouchTap={boundGoToPlaylist}
+                  primaryText={playlist.title}
+                  >
+                </MenuItem>
+              )
+            })
+          }
+          </Menu>
+        </Popover>
+      </span>
+    );
   }
 }
 

@@ -1,24 +1,20 @@
 import React, { Component } from 'react';
-import { browserHistory, Link } from 'react-router';
-import { Button, Image } from 'react-bootstrap';
+import { browserHistory } from 'react-router';
 
 import { loginUser, logoutUser, getPlaylists, getLikes, getFollowings } from '../actions/auth';
+import PlaylistsContainer from '../containers/PlaylistsContainer';
+
+import FlatButton from 'material-ui/FlatButton';
+import RaisedButton from 'material-ui/RaisedButton';
+import styles from '../styles/MenuButtonStyle'
 
 export default class UserNav extends Component {
   constructor(props) {
     super(props);
     this.login = this.login.bind(this);
     this.logout = this.logout.bind(this);
-    this.playlists = this.playlists.bind(this);
     this.followings = this.followings.bind(this);
     this.likes = this.likes.bind(this);
-  }
-
-  playlists(e) {
-    e.preventDefault();
-    const { dispatch } = this.props;
-    const { user } = this.props.auth;
-    dispatch(getPlaylists(user.id));
   }
 
   followings(e) {
@@ -26,6 +22,7 @@ export default class UserNav extends Component {
     const { dispatch } = this.props;
     const { user } = this.props.auth;
     dispatch(getFollowings(user.id));
+    browserHistory.push('/me/followings');
   }
 
   likes(e) {
@@ -33,6 +30,7 @@ export default class UserNav extends Component {
     const { dispatch } = this.props;
     const { user } = this.props.auth;
     dispatch(getLikes(user.id));
+    browserHistory.push('/me/likes');
   }
 
   logout(e){
@@ -53,25 +51,31 @@ export default class UserNav extends Component {
     if (authed) {
       return (
         <div>
-          <Button bsStyle="link" onClick={this.followings}>
-            <Link to="/me/followings" activeStyle={{ color: 'red'}} >Followings</Link>
-          </Button>
-          <Button bsStyle="link" onClick={this.playlists}>
-            <Link to="/me/playlists" activeStyle={{ color: 'red'}} >Playlists</Link>
-          </Button>
-          <Button bsStyle="link" onClick={this.likes}>
-            <Link to="/me/likes" activeStyle={{ color: 'red' }}>Likes</Link>
-          </Button>
-          <Button bsStyle="link" onClick={this.logout}>
-            <Link to="/">
-            {user.username} <small>(logout)</small>
-            </Link>
-            <Image className="images" src={user.avatar_url} circle />
-          </Button>
+          <FlatButton
+            onClick={this.followings}
+            label="Followings"
+            rippleColor="white"
+            style={styles.buttons}
+          />
+          <PlaylistsContainer />
+          <FlatButton
+            onClick={this.likes}
+            label="Likes"
+            rippleColor="white"
+            style={styles.buttons}
+          />
+
+          <RaisedButton
+            onClick={this.logout}
+            label={user.username}
+            labelPosition="before"
+            icon={<img className="images" src={user.avatar_url} />}
+            style={styles.buttons}
+          />
         </div>
       )
     } else {
-      return <Button bsStyle="success" onClick={this.login}>Login</Button>;
+      return <RaisedButton style={styles.buttons} label="Login" onClick={this.login} />;
     }
   }
 }

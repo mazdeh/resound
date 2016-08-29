@@ -1,34 +1,42 @@
 import * as types from '../constants/actionTypes';
 import { CLIENT_ID } from '../constants/auth';
 
-function setPlaying(player) {
+function setPlayer(player) {
     return {
-        type: types.PLAYING_SET,
+        type: types.SET_PLAYER,
         player
     };
 };
 
-export function playSong(id) {
+export function setCurrentTime(now) {
+  return {
+    type: types.SET_CURRENT_TIME,
+    now
+  }
+}
+
+export function toggleIsPlaying(isPlaying) {
+  return {
+    type: types.TOGGLE_IS_PLAYING,
+    isPlaying
+  }
+}
+
+export function setPlayingTrack(playingTrack) {
+  return {
+    type: types.SET_PLAYING_TRACK,
+    playingTrack
+  }
+}
+
+export function getPlayer(id) {
   return function (dispatch) {
     SC.initialize({ client_id: CLIENT_ID });
 
     const url = '/tracks/' + id;
     SC.stream(url)
       .then((player) => {
-        console.log('player: ', player);
-        player.play((d) => {
-          console.log('I was played: ', d);
-
-        })
-        dispatch(setPlaying(player))
+        dispatch(setPlayer(player))
     });
-
-    // fetch(url, {
-    //   mode: 'no-cors'
-    // })
-    //   .then((response) => response.JSON())
-    //   .then((response) => {
-    //     console.log('reponse: ', response);
-    //   })
   }
 }

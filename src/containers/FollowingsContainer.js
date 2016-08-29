@@ -2,26 +2,30 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Well, Row, Col } from 'react-bootstrap';
 
+import Avatar from 'material-ui/Avatar';
+import List from 'material-ui/List/List';
+import ListItem from 'material-ui/List/ListItem';
+
+import styles from '../styles/PaperStyle';
+
 class FollowingsContainer extends Component {
   render() {
     const { followings } = this.props;
     return (
-      <div>
+        <List>
         {
           followings.map((following, key) => {
             return (
-              <div key={key}>
-                <Well>
-                  <Row>
-                    <Col sm={2}><img src={following.avatar_url} /></Col>
-                    <Col sm={6}>{following.username}</Col>
-                  </Row>
-                </Well>
-              </div>
+                <ListItem
+                  key={key}
+                  leftAvatar={<Avatar src={following.avatar_url} />}
+                >
+                  {following.username}
+                </ListItem>
             )
           })
         }
-      </div>
+        </List>
     )
   }
 }
