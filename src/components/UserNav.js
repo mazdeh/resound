@@ -6,7 +6,7 @@ import PlaylistsContainer from '../containers/PlaylistsContainer';
 
 import FlatButton from 'material-ui/FlatButton';
 import RaisedButton from 'material-ui/RaisedButton';
-import styles from '../styles/MenuButtonStyle'
+import styles from '../styles/NavContainer'
 
 export default class UserNav extends Component {
   constructor(props) {

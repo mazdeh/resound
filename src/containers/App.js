@@ -6,21 +6,12 @@ import GridList from 'material-ui/GridList';
 import NavContainer from './NavContainer';
 import PlayerContainer from './PlayerContainer';
 
-const styles = {
-  flexContainer: {
-    display: 'flex',
-    flexFlow: 'row wrap'
-  }
-};
-
 class App extends Component {
     render() {
         return (
           <div>
           <NavContainer />
-              <div style={styles.flexContainer}>
                 {this.props.children}
-              </div>
           <PlayerContainer />
           </div>
         )

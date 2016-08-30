@@ -8,7 +8,7 @@ import FlatButton from 'material-ui/FlatButton';
 import Popover from 'material-ui/Popover';
 import Menu from 'material-ui/Menu';
 import MenuItem from 'material-ui/MenuItem';
-import styles from '../styles/MenuButtonStyle'
+import styles from '../styles/NavContainer'
 
 
 class PlaylistsContainer extends Component {
