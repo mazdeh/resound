@@ -7,14 +7,18 @@ import styles from '../styles/PaperStyle';
 export default class Tracks extends Component {
   render() {
     const { tracks, dispatch } = this.props;
-    return (
-      <div style={styles.gridTile}>
-        {
-          tracks.map((track, key) => {
-            return <Track key={key} track={track} dispatch={dispatch} />;
-          })
-        }
-      </div>
-    )
+    if (tracks) {
+      return (
+        <div style={styles.gridTile}>
+          {
+            tracks.map((track, key) => {
+              return <Track key={key} track={track} dispatch={dispatch} />;
+            })
+          }
+        </div>
+      )
+    } else {
+      return <div>too late</div>
+    }
   }
 }

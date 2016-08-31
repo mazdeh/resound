@@ -6,7 +6,7 @@ import Tracks from '../components/Tracks';
 class PlaylistContent extends Component {
 
   render() {
-    const { playlist, dispatch } = this.props;
+    const { playlist } = this.props;
     return (
       <div>
         <h1><small>Playing from</small> {playlist.title}</h1>

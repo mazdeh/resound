@@ -10,7 +10,6 @@ import Menu from 'material-ui/Menu';
 import MenuItem from 'material-ui/MenuItem';
 import styles from '../styles/NavContainer'
 
-
 class PlaylistsContainer extends Component {
 
   constructor(props) {

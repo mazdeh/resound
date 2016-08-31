@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import GridList from 'material-ui/GridList';
+import { search } from '../actions/search';
 
 import NavContainer from './NavContainer';
 import PlayerContainer from './PlayerContainer';
@@ -11,7 +12,7 @@ class App extends Component {
         return (
           <div>
           <NavContainer />
-                {this.props.children}
+            {this.props.children}
           <PlayerContainer />
           </div>
         )

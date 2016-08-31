@@ -1,13 +1,14 @@
 import SC from 'soundcloud';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Router, Route, browserHistory } from 'react-router';
+import { Router, Route, browserHistory, IndexRoute } from 'react-router';
 import { syncHistoryWithStore } from 'react-router-redux';
 import { Provider } from 'react-redux';
 
 import configureStore from './stores/configureStore';
 
 import App from './containers/App';
+import LandingPageContainer from './containers/LandingPageContainer';
 import PlaylistsContainer from './containers/PlaylistsContainer';
 import LikesContainer from './containers/LikesContainer';
 import FollowingsContainer from './containers/FollowingsContainer';
@@ -27,7 +28,10 @@ ReactDOM.render(
   <MuiThemeProvider>
   <Provider store={store}>
     <Router history={history}>
-      <Route path="/" component={App} />
+      <Route path="/" component={App} >
+        <IndexRoute component={LandingPageContainer} />
+        <Route path="search/:query" component={LandingPageContainer} />
+      </Route>
       <Route path="me" component={App} >
         <Route path="playlists" component={PlaylistsContainer} />
         <Route path="playlists/:id" component={PlaylistContent} />

@@ -9,48 +9,14 @@ import Avatar from 'material-ui/Avatar';
 import FloatingActionButton from 'material-ui/FloatingActionButton';
 import FontIcon from 'material-ui/FontIcon';
 import LinearProgress from 'material-ui/LinearProgress';
-
-const styles = {
-  PlayerContainer: {
-    display: 'flex',
-    flexFlow: 'row wrap',
-    alignItems: 'flex-start',
-    position: 'fixed',
-    left: 0,
-    bottom: 0,
-    width: '100%',
-    height: 76
-  },
-  TrackInfo: {
-    display: 'flex',
-    flexFlow: 'row nowrap',
-    alignSelf: 'flex-start',
-    padding: 10,
-    width: '45%'
-  },
-  TrackAvatar: {
-  },
-  TrackTitle: {
-    marginLeft: 20
-  },
-  PlayButton: {
-    alignSelf: 'center'
-  },
-  icon: {
-    fontSize: 48
-  },
-  ProgressBar: {
-    position: 'fixed',
-    left: 0,
-    bottom: 76
-  }
-}
+import styles from '../styles/PlayerNav';
 
 export default class PlayerNav extends Component {
   constructor(props) {
     super(props);
     this.togglePlay = this.togglePlay.bind(this);
     this.handleProgress = this.handleProgress.bind(this);
+    this.handleEnded = this.handleEnded.bind(this);
     this.state = {
       completed: 0
     }
@@ -59,6 +25,7 @@ export default class PlayerNav extends Component {
   componentDidMount() {
     const audioElement = ReactDOM.findDOMNode(this.refs.audio);
     audioElement.addEventListener('timeupdate', this.handleProgress);
+    audioElement.addEventListener('ended', this.handleEnded);
     audioElement.play();
   }
 
@@ -75,6 +42,11 @@ export default class PlayerNav extends Component {
     this.setState({
       completed: e.target.currentTime / e.target.duration * 100
     })
+  }
+
+  handleEnded(e) {
+    const { dispatch } = this.props;
+    dispatch(toggleIsPlaying(false));
   }
 
   togglePlay() {

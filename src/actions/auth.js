@@ -3,7 +3,7 @@ import * as types from '../constants/actionTypes';
 
 import { browserHistory } from 'react-router';
 
-function setUser(user) {
+function _setUser(user) {
   return {
     type: types.USER_SET,
     user
@@ -15,21 +15,21 @@ export function logoutUser() {
     type: types.USER_RESET
   }
 }
-function setPlaylists(playlists) {
+function _setPlaylists(playlists) {
   return {
     type: types.PLAYLISTS_SET,
     playlists
   }
 }
 
-function setLikes(likes) {
+function _setLikes(likes) {
   return {
     type: types.LIKES_SET,
     likes
   }
 }
 
-function setFollowings(followings) {
+function _setFollowings(followings) {
   return {
     type: types.FOLLOWINGS_SET,
     followings
@@ -39,15 +39,13 @@ function setFollowings(followings) {
 export function loginUser() {
   return function (dispatch) {
     SC.initialize({ client_id: CLIENT_ID, redirect_uri: REDIRECT_URI });
-
-    // fetch() fetches the URL like a XMLHttpRequest
-    // returns a promise that is resolved to `response`
+    
     SC.connect().then((session) => {
       fetch(`//api.soundcloud.com/me?oauth_token=${session.oauth_token}`)
       .then((response) => response.json())
       .then((user) => {
         browserHistory.push('/me/likes');
-        dispatch(setUser(user));
+        dispatch(_setUser(user));
         dispatch(getLikes(user.id));
         dispatch(getPlaylists(user.id));
       });
@@ -61,7 +59,7 @@ export function getPlaylists(userId) {
 
     const fetchURL = '/users/' + userId + '/playlists';
     SC.get(fetchURL).then(function(playlists) {
-      dispatch(setPlaylists(playlists));
+      dispatch(_setPlaylists(playlists));
     })
   }
 }
@@ -72,7 +70,7 @@ export function getLikes(userId) {
 
     const fetchURL = '/users/' + userId + '/favorites';
     SC.get(fetchURL).then(function(likes) {
-      dispatch(setLikes(likes));
+      dispatch(_setLikes(likes));
     })
   }
 }
@@ -83,7 +81,7 @@ export function getFollowings(userId) {
 
     const fetchURL = '/users/' + userId + '/followings';
     SC.get(fetchURL).then(function(followings) {
-      dispatch(setFollowings(followings.collection));
+      dispatch(_setFollowings(followings.collection));
     })
   }
 }
