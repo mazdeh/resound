@@ -79,5 +79,3 @@ export default class UserNav extends Component {
     }
   }
 }
-
-export default UserNav;
