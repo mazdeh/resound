@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Well, Row, Col } from 'react-bootstrap';
 
 import Avatar from 'material-ui/Avatar';
 import List from 'material-ui/List/List';

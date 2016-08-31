@@ -7,7 +7,7 @@
 ### notable libraries:
 - webpack, webpack-dev-server
 - react-router
-- react-bootstrap
+- material-ui
 
 ## run
 ```npm install```
