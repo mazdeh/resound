@@ -16,10 +16,8 @@ export default class Track extends Component {
   playTrack(e) {
     e.preventDefault();
     const { track, dispatch } = this.props;
-    // set track on state.player
     dispatch(setPlayingTrack(track));
-    // get SCplayer from SC
-    dispatch(getPlayer(track.id))
+    dispatch(getPlayer(track))
     dispatch(toggleIsPlaying(true));
   }
 
@@ -27,16 +25,20 @@ export default class Track extends Component {
     const { track } = this.props;
     return (
       <Paper style={styles.paper}>
-        <div onClick={this.playTrack} style={styles.media}>
-          <img src={track.artwork_url} />
-        </div>
+      {
+        track.artwork_url ?
+        <img onClick={this.playTrack} src={track.artwork_url} /> :
+        <span onClick={this.playTrack} style={styles.placeholder}><FontIcon
+          style={styles.placeholderIcon}
+          className="material-icons">
+            headset
+        </FontIcon></span>
+      }
         <div style={styles.header}>
           <div>{track.title}</div>
 
           <div style={styles.info}>
-            <span>
-              {track.user.username}
-            </span>
+            <span>{track.user.username}</span>
             <span>
               <FontIcon
                 style={styles.icons}
@@ -54,6 +56,7 @@ export default class Track extends Component {
               {track.favoritings_count}
             </span>
           </div>
+
         </div>
       </Paper>
     );

@@ -3,31 +3,40 @@ export default {
     display: 'flex',
     flexFlow: 'row wrap',
     alignItems: 'flex-start',
-    justifyContent: 'space-around'
+    justifyContent: 'space-around',
+    marginBottom: 100
   },
   paper: {
     display: 'flex',
-    flexFlow: 'column nowrap',
-    flexBasis: 250,
-    alignItems: 'flex-start',
-    justifyContent: 'space-between',
-    height: 200,
+    flexBasis: 400,
     margin: 10
   },
   header: {
-    padding: 16
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'space-between',
+    flexBasis: 300,
+    padding: 15
   },
   info: {
     display: 'flex',
     flexFlow: 'row nowrap',
     justifyContent: 'space-between',
-    minWidth: 250,
-    marginTop: 8,
     opacity: .6,
     fontSize: 12
   },
   icons: {
     fontSize: 12,
     marginRight: 5
+  },
+  placeholder: {
+    height: 100,
+    width: 100
+  },
+  placeholderIcon: {
+    fontSize: 48,
+    paddingTop: 27,
+    paddingLeft: 27,
+    opacity: .8
   }
 }

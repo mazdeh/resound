@@ -5,7 +5,7 @@ import UserNav from '../components/UserNav';
 
 import AppBar from 'material-ui/AppBar';
 import FontIcon from 'material-ui/FontIcon';
-import styles from '../styles/MenuButtonStyle';
+import styles from '../styles/NavContainer';
 
 import {fullWhite} from 'material-ui/styles/colors';
 
@@ -14,6 +14,7 @@ class NavContainer extends Component {
     return (
       <AppBar
         title="resound"
+        style={styles.AppBar}
         iconElementLeft={
           <FontIcon className="material-icons" style={styles.logo} color={fullWhite}>
             headset

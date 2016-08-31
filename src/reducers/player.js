@@ -1,15 +1,15 @@
 import * as types from '../constants/actionTypes';
 
+import { CLIENT_ID } from '../constants/auth';
+
 const initialState = {
   isPlaying: false,
   playingTrack: null,
-  SCplayer: {}
+  streamUrl: null
 };
 
 export default function(state = initialState, action) {
     switch (action.type) {
-      case types.SET_PLAYER:
-        return setPlayer(state, action);
       case types.TOGGLE_IS_PLAYING:
         return Object.assign({}, state, {
           isPlaying: action.isPlaying
@@ -22,15 +22,10 @@ export default function(state = initialState, action) {
         return Object.assign({}, state, {
           playingTrack: action.playingTrack
         })
+      case types.SET_STREAM_URL:
+        return Object.assign({}, state, {
+          streamUrl: action.url
+        })
     }
     return state;
 };
-
-function setPlayer(state, action) {
-  const { player } = action;
-  player.play();
-
-  return Object.assign({}, state, {
-    SCplayer: player
-  })
-}

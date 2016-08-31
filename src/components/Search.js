@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-// import { track } from '../actions/track';
-import { Button, Form, FormGroup, FormControl } from 'react-bootstrap';
 
 class Search extends Component {
   constructor(props) {
@@ -17,17 +15,18 @@ class Search extends Component {
 
   render() {
     return (
-      <Form inline>
-        <FormGroup>
-          <FormControl
-            type="text"
-            placeholder="Search tracks"
-          />
-        </FormGroup>
-          <Button onClick={this.handleChange} type="submit">
-            Search
-          </Button>
-      </Form>
+      null
+      // <Form inline>
+      //   <FormGroup>
+      //     <FormControl
+      //       type="text"
+      //       placeholder="Search tracks"
+      //     />
+      //   </FormGroup>
+      //     <Button onClick={this.handleChange} type="submit">
+      //       Search
+      //     </Button>
+      // </Form>
     )
   }
 }
