@@ -3,7 +3,8 @@ export default {
     display: 'flex',
     flexFlow: 'row wrap',
     alignItems: 'flex-start',
-    justifyContent: 'space-around'
+    justifyContent: 'space-around',
+    marginBottom: 100
   },
   paper: {
     display: 'flex',
